@@ -25,8 +25,8 @@ library(dplyr)
 Introduction
 =========================================
 
-> <center>Please do not show this portfolio in class</center>
-***
+<center>Please do not show this portfolio in class</center>
+
 I will be exploring the genre of techno and house. 
 Techno emerged in the late 80's from the wide availability of synthesizers and the inspiration of early electronic music artist like Kraftwerk, Giorgio Mordor, Depech Mode, Front 242. 
 The techno seed sprouted at about the same time in America and Europe. 
