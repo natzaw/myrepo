@@ -1,35 +1,102 @@
 ---
-title: "Origins of Techno and House"
+title: "CompMusic Porftolio"
 author: "Natalia Zawada"
-date: "2/15/2021"
-output: html_document
+date: "21/02/2021"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+    orientation: columns
+    storyboard: true
+    theme: lumen
 ---
 
-## Origins of Techno and House 
+```{r}
+library(tidyverse)
+library(spotifyr)
+library(flexdashboard)
+library(ggthemes)
+library(ggplot2)
+library(plotly)
+library(dplyr)
 
-Helo hello heelloooooo
-hellooooo  
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+Introduction
+=========================================
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+> <center>Please do not show this portfolio in class</center>
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r, echo=FALSE}
 
-```{r cars}
-summary(cars)
+my_id <- 'natzaw'
+
+
+detriot <- get_playlist_audio_features(my_id, "7zJxmBOEVValZYC0zmfLrf")
+chicago <- get_playlist_audio_features(my_id, "5ZixL1Pb2mzyED9hSQ8y2G")
+europe  <- get_playlist_audio_features(my_id, "1YnOhBchUwaRFOqzWZp4CV")
+
+```
+Visualization {.storyboard}
+=========================================
+
+### Danceability vs Energy 
+
+```{r, echo=FALSE}
+
+ggplot(detriot, (aes(energy, danceability, color = key, size = tempo ))) +
+  geom_point() +
+  ggtitle("Detriot")
+
+ggplot(chicago, (aes(energy, danceability, color = key, size = tempo))) +
+  geom_point() + 
+  ggtitle("Chicago")
+
+ggplot(europe, (aes(energy, danceability, color = key, size = tempo))) +
+  geom_point() + 
+  ggtitle("Berlin")
 ```
 
-## Including Plots
+***
 
-You can also embed plots, for example:
+Commentary Here
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### Valence vs Loudness
+
+```{r, echo=FALSE}
+ggplot(detriot, (aes(valence, loudness, color = mode))) +
+  geom_point() +
+  ggtitle("Detriot")
+
+ggplot(chicago, (aes(valence, loudness, color = mode))) +
+  geom_point() + 
+  ggtitle("Chicago")
+
+ggplot(europe, (aes(valence, loudness, color = mode))) +
+  geom_point() + 
+  ggtitle("Berlin")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+***
+
+Commentary Here
+
+### Chart 3
+
+```{r, echo=FALSE}
+
+```
+
+***
+
+Commentary Here
+
+
+Discussion
+=========================================
+
+Discussion Here
+
+
+
+
