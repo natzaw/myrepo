@@ -51,7 +51,7 @@ chicago <- get_playlist_audio_features(my_id, "5ZixL1Pb2mzyED9hSQ8y2G")
 europe  <- get_playlist_audio_features(my_id, "1YnOhBchUwaRFOqzWZp4CV")
 
 ```
-Visualization {.storyboard}
+Visualizations {.storyboard}
 =========================================
 
 ### Danceability vs Energy 
