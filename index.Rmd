@@ -11,14 +11,22 @@ output:
 ---
 
 ```{r}
-library(tidyverse)
-library(spotifyr)
 library(flexdashboard)
+
+library(tidyverse)
+library(tidymodels)
+
+library(ggdendro)
 library(ggthemes)
 library(ggplot2)
 library(plotly)
 library(dplyr)
+
+library(spotifyr)
 library(compmus)
+
+
+
 
 
 ```
@@ -45,12 +53,7 @@ If space and scope permit, I would also like to look at the comparison between e
 
 ```{r, echo=FALSE}
 
-my_id <- 'natzaw'
 
-
-detriot <- get_playlist_audio_features(my_id, "7zJxmBOEVValZYC0zmfLrf")
-chicago <- get_playlist_audio_features(my_id, "5ZixL1Pb2mzyED9hSQ8y2G")
-europe  <- get_playlist_audio_features(my_id, "1YnOhBchUwaRFOqzWZp4CV")
 
 ```
 Visualizations {.storyboard}
@@ -59,6 +62,13 @@ Visualizations {.storyboard}
 ### Danceability vs Energy 
 
 ```{r, echo=FALSE}
+
+my_id <- 'natzaw'
+
+
+detriot <- get_playlist_audio_features(my_id, "7zJxmBOEVValZYC0zmfLrf")
+chicago <- get_playlist_audio_features(my_id, "5ZixL1Pb2mzyED9hSQ8y2G")
+europe  <- get_playlist_audio_features(my_id, "1YnOhBchUwaRFOqzWZp4CV")
 
 ggplot(detriot, (aes(energy, danceability, color = key, size = tempo ))) +
   geom_point() +
@@ -543,8 +553,8 @@ Commentary Here
 #load libraries 
 
 # library(tidyverse)
-library(tidymodels)
-library(ggdendro)
+# library(tidymodels)
+# library(ggdendro)
 # library(heatmaply)
 # library(spotifyr)
 # library(compmus)
@@ -683,66 +693,66 @@ techno_acid_features %>%
 
 #clustering 
 
-early_chicago <-
-  get_playlist_audio_features("Early Chicago", "5ZixL1Pb2mzyED9hSQ8y2G") %>%
-  add_audio_analysis() %>%
-  mutate(
-    segments = map2(segments, key, compmus_c_transpose),
-    pitches =
-      map(segments,
-        compmus_summarise, pitches,
-        method = "mean", norm = "manhattan"
-      ),
-    timbre =
-      map(
-        segments,
-        compmus_summarise, timbre,
-        method = "mean"
-      )
-  ) %>%
-  mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
-  mutate_at(vars(pitches, timbre), map, bind_rows) %>%
-  unnest(cols = c(pitches, timbre))
-
-# pre-processing 
-
-chicago_juice <-
-  recipe(
-    track.name ~
-      danceability +
-      energy +
-      loudness +
-      speechiness +
-      acousticness +
-      instrumentalness +
-      liveness +
-      valence +
-      tempo +
-      duration +
-      C + `C#|Db` + D + `D#|Eb` +
-      E + `F` + `F#|Gb` + G +
-      `G#|Ab` + A + `A#|Bb` + B +
-      c01 + c02 + c03 + c04 + c05 + c06 +
-      c07 + c08 + c09 + c10 + c11 + c12,
-    data = early_chicago
-  ) %>%
-  step_center(all_predictors()) %>%
-  step_scale(all_predictors()) %>% 
-  # step_range(all_predictors()) %>% 
-  prep(early_chicago %>% mutate(track.name = str_trunc(track.name, 20))) %>%
-  juice() %>%
-  column_to_rownames("track.name")
-
-# computing disctances 
-
-acid_dist <- dist(chicago_juice, method = "euclidean")
-
-# hierarchical clustering
-
-chicago_dist %>% 
-  hclust(method = "average") %>% # Try single, average, and complete.
-  dendro_data() %>%
-  ggdendrogram()
+# early_chicago <-
+#   get_playlist_audio_features("Early Chicago", "5ZixL1Pb2mzyED9hSQ8y2G") %>%
+#   add_audio_analysis() %>%
+#   mutate(
+#     segments = map2(segments, key, compmus_c_transpose),
+#     pitches =
+#       map(segments,
+#         compmus_summarise, pitches,
+#         method = "mean", norm = "manhattan"
+#       ),
+#     timbre =
+#       map(
+#         segments,
+#         compmus_summarise, timbre,
+#         method = "mean"
+#       )
+#   ) %>%
+#   mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
+#   mutate_at(vars(pitches, timbre), map, bind_rows) %>%
+#   unnest(cols = c(pitches, timbre))
+# 
+# # pre-processing 
+# 
+# chicago_juice <-
+#   recipe(
+#     track.name ~
+#       danceability +
+#       energy +
+#       loudness +
+#       speechiness +
+#       acousticness +
+#       instrumentalness +
+#       liveness +
+#       valence +
+#       tempo +
+#       duration +
+#       C + `C#|Db` + D + `D#|Eb` +
+#       E + `F` + `F#|Gb` + G +
+#       `G#|Ab` + A + `A#|Bb` + B +
+#       c01 + c02 + c03 + c04 + c05 + c06 +
+#       c07 + c08 + c09 + c10 + c11 + c12,
+#     data = early_chicago
+#   ) %>%
+#   step_center(all_predictors()) %>%
+#   step_scale(all_predictors()) %>% 
+#   # step_range(all_predictors()) %>% 
+#   prep(early_chicago %>% mutate(track.name = str_trunc(track.name, 20))) %>%
+#   juice() %>%
+#   column_to_rownames("track.name")
+# 
+# # computing disctances 
+# 
+# acid_dist <- dist(chicago_juice, method = "euclidean")
+# 
+# # hierarchical clustering
+# 
+# chicago_dist %>% 
+#   hclust(method = "average") %>% # Try single, average, and complete.
+#   dendro_data() %>%
+#   ggdendrogram()
 ```
 
 ***
