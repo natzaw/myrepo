@@ -59,6 +59,219 @@ If space and scope permit, I would also like to look at the comparison between e
 Visualizations {.storyboard}
 =========================================
 
+### Classification
+
+```{r, echo=FALSE}
+
+#load libraries 
+
+# library(tidyverse)
+# library(tidymodels)
+# library(ggdendro)
+# library(heatmaply)
+# library(spotifyr)
+# library(compmus)
+
+# set up
+get_conf_mat <- function(fit) {
+  outcome <- .get_tune_outcome_names(fit)
+  fit %>%
+    collect_predictions() %>%
+    conf_mat(truth = outcome, estimate = .pred_class)
+}
+
+get_pr <- function(fit) {
+  fit %>%
+    conf_mat_resampled() %>%
+    group_by(Prediction) %>% mutate(precision = Freq / sum(Freq)) %>%
+    group_by(Truth) %>% mutate(recall = Freq / sum(Freq)) %>%
+    ungroup() %>% filter(Prediction == Truth) %>%
+    select(class = Prediction, precision, recall)
+}
+
+#classification
+
+berlin <- get_playlist_audio_features("spotify", "1YnOhBchUwaRFOqzWZp4CV")
+detroit <- get_playlist_audio_features("spotify", "7zJxmBOEVValZYC0zmfLrf")
+chicago <- get_playlist_audio_features("spotify", "5ZixL1Pb2mzyED9hSQ8y2G")
+techno_acid <-
+  bind_rows(
+    berlin %>% mutate(playlist = "Early Berlin") %>% slice_head(n = 10),
+    detroit %>% mutate(playlist = "Early Detroit") %>% slice_head(n = 10),
+    chicago %>% mutate(playlist = "Early Chicago") %>% slice_head(n = 10)
+  )
+
+# bind the three playlists together using the trick from the beginning of the course, transpose the chroma vectors to a common tonic using the compmus_c_transpose function, and then summarise the vectors like we did when generating chromagrams and cepstrograms
+
+techno_acid_features <-
+  techno_acid %>%  # For your portfolio, change this to the name of your corpus.
+  add_audio_analysis() %>%
+  mutate(
+    playlist = factor(playlist),
+    segments = map2(segments, key, compmus_c_transpose),
+    pitches =
+      map(
+        segments,
+        compmus_summarise, pitches,
+        method = "mean", norm = "manhattan"
+      ),
+    timbre =
+      map(
+        segments,
+        compmus_summarise, timbre,
+        method = "mean",
+      )
+  ) %>%
+  mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
+  mutate_at(vars(pitches, timbre), map, bind_rows) %>%
+  unnest(cols = c(pitches, timbre))
+
+#pre-processing
+
+techno_acid_recipe <-
+  recipe(
+    playlist ~
+      danceability +
+      energy +
+      loudness +
+      speechiness +
+      acousticness +
+      instrumentalness +
+      liveness +
+      valence +
+      tempo +
+      duration +
+      C + `C#|Db` + D + `D#|Eb` +
+      E + `F` + `F#|Gb` + G +
+      `G#|Ab` + A + `A#|Bb` + B +
+      c01 + c02 + c03 + c04 + c05 + c06 +
+      c07 + c08 + c09 + c10 + c11 + c12,
+    data = techno_acid_features,          # Use the same name as the previous block.
+  ) %>%
+  step_center(all_predictors()) %>%
+  step_scale(all_predictors())      # Converts to z-scores.
+  # step_range(all_predictors())    # Sets range to [0, 1].
+
+# cross- validation
+
+techno_acid_cv <- techno_acid_features %>% vfold_cv(5)
+
+#classification algorithms: kNN
+
+# Decision Trees
+
+# Random Forest
+
+forest_model <-
+  rand_forest() %>%
+  set_mode("classification") %>%
+  set_engine("ranger", importance = "impurity")
+techno_acid_forest <-
+  workflow() %>%
+  add_recipe(techno_acid_recipe) %>%
+  add_model(forest_model) %>%
+  fit_resamples(
+    techno_acid_cv,
+    control = control_resamples(save_pred = TRUE)
+  )
+
+techno_acid_forest %>% get_pr()
+
+workflow() %>%
+  add_recipe(techno_acid_recipe) %>%
+  add_model(forest_model) %>%
+  fit(techno_acid_features) %>%
+  pluck("fit", "fit", "fit") %>%
+  ranger::importance() %>%
+  enframe() %>%
+  mutate(name = fct_reorder(name, value)) %>%
+  ggplot(aes(name, value)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(x = NULL, y = "Importance")
+
+# ggplot
+
+techno_acid_features %>%
+  ggplot(aes(x = instrumentalness, y = danceability, colour = playlist, size = loudness)) +
+  geom_point(alpha = 0.8) +
+  scale_color_viridis_d() +
+  labs(
+    x = "Instrumentalness",
+    y = "Danceability",
+    size = "Loudness",
+    colour = "Playlist"
+  )
+
+# #clustering 
+# 
+# early_chicago <-
+#   get_playlist_audio_features("Early Chicago", "5ZixL1Pb2mzyED9hSQ8y2G") %>%
+#   add_audio_analysis() %>%
+#   mutate(
+#     segments = map2(segments, key, compmus_c_transpose),
+#     pitches =
+#       map(segments,
+#         compmus_summarise, pitches,
+#         method = "mean", norm = "manhattan"
+#       ),
+#     timbre =
+#       map(
+#         segments,
+#         compmus_summarise, timbre,
+#         method = "mean"
+#       )
+#   ) %>%
+#   mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
+#   mutate_at(vars(pitches, timbre), map, bind_rows) %>%
+#   unnest(cols = c(pitches, timbre))
+# 
+# # pre-processing
+# 
+# chicago_juice <-
+#   recipe(
+#     track.name ~
+#       danceability +
+#       energy +
+#       loudness +
+#       speechiness +
+#       acousticness +
+#       instrumentalness +
+#       liveness +
+#       valence +
+#       tempo +
+#       duration +
+#       C + `C#|Db` + D + `D#|Eb` +
+#       E + `F` + `F#|Gb` + G +
+#       `G#|Ab` + A + `A#|Bb` + B +
+#       c01 + c02 + c03 + c04 + c05 + c06 +
+#       c07 + c08 + c09 + c10 + c11 + c12,
+#     data = early_chicago
+#   ) %>%
+#   step_center(all_predictors()) %>%
+#   step_scale(all_predictors()) %>%
+#   # step_range(all_predictors()) %>%
+#   prep(early_chicago %>% mutate(track.name = str_trunc(track.name, 20))) %>%
+#   juice() %>%
+#   column_to_rownames("track.name")
+# 
+# # computing disctances
+# 
+# acid_dist <- dist(chicago_juice, method = "euclidean")
+# 
+# # hierarchical clustering
+# 
+# chicago_dist %>%
+#   hclust(method = "average") %>% # Try single, average, and complete.
+#   dendro_data() %>%
+#   ggdendrogram()
+```
+
+***
+
+Commentary Here
+
 ### Danceability vs Energy 
 
 ```{r, echo=FALSE}
@@ -546,218 +759,6 @@ Commentary Here
 
 Commentary Here
 
-### Classification
-
-```{r, echo=FALSE}
-
-#load libraries 
-
-# library(tidyverse)
-# library(tidymodels)
-# library(ggdendro)
-# library(heatmaply)
-# library(spotifyr)
-# library(compmus)
-
-# set up
-get_conf_mat <- function(fit) {
-  outcome <- .get_tune_outcome_names(fit)
-  fit %>%
-    collect_predictions() %>%
-    conf_mat(truth = outcome, estimate = .pred_class)
-}
-
-get_pr <- function(fit) {
-  fit %>%
-    conf_mat_resampled() %>%
-    group_by(Prediction) %>% mutate(precision = Freq / sum(Freq)) %>%
-    group_by(Truth) %>% mutate(recall = Freq / sum(Freq)) %>%
-    ungroup() %>% filter(Prediction == Truth) %>%
-    select(class = Prediction, precision, recall)
-}
-
-#classification
-
-berlin <- get_playlist_audio_features("spotify", "1YnOhBchUwaRFOqzWZp4CV")
-detroit <- get_playlist_audio_features("spotify", "7zJxmBOEVValZYC0zmfLrf")
-chicago <- get_playlist_audio_features("spotify", "5ZixL1Pb2mzyED9hSQ8y2G")
-techno_acid <-
-  bind_rows(
-    berlin %>% mutate(playlist = "Early Berlin") %>% slice_head(n = 10),
-    detroit %>% mutate(playlist = "Early Detroit") %>% slice_head(n = 10),
-    chicago %>% mutate(playlist = "Early Chicago") %>% slice_head(n = 10)
-  )
-
-# bind the three playlists together using the trick from the beginning of the course, transpose the chroma vectors to a common tonic using the compmus_c_transpose function, and then summarise the vectors like we did when generating chromagrams and cepstrograms
-
-techno_acid_features <-
-  techno_acid %>%  # For your portfolio, change this to the name of your corpus.
-  add_audio_analysis() %>%
-  mutate(
-    playlist = factor(playlist),
-    segments = map2(segments, key, compmus_c_transpose),
-    pitches =
-      map(
-        segments,
-        compmus_summarise, pitches,
-        method = "mean", norm = "manhattan"
-      ),
-    timbre =
-      map(
-        segments,
-        compmus_summarise, timbre,
-        method = "mean",
-      )
-  ) %>%
-  mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
-  mutate_at(vars(pitches, timbre), map, bind_rows) %>%
-  unnest(cols = c(pitches, timbre))
-
-#pre-processing
-
-techno_acid_recipe <-
-  recipe(
-    playlist ~
-      danceability +
-      energy +
-      loudness +
-      speechiness +
-      acousticness +
-      instrumentalness +
-      liveness +
-      valence +
-      tempo +
-      duration +
-      C + `C#|Db` + D + `D#|Eb` +
-      E + `F` + `F#|Gb` + G +
-      `G#|Ab` + A + `A#|Bb` + B +
-      c01 + c02 + c03 + c04 + c05 + c06 +
-      c07 + c08 + c09 + c10 + c11 + c12,
-    data = techno_acid_features,          # Use the same name as the previous block.
-  ) %>%
-  step_center(all_predictors()) %>%
-  step_scale(all_predictors())      # Converts to z-scores.
-  # step_range(all_predictors())    # Sets range to [0, 1].
-
-# cross- validation
-
-techno_acid_cv <- techno_acid_features %>% vfold_cv(5)
-
-#classification algorithms: kNN
-
-# Decision Trees
-
-# Random Forest
-
-forest_model <-
-  rand_forest() %>%
-  set_mode("classification") %>%
-  set_engine("ranger", importance = "impurity")
-techno_acid_forest <-
-  workflow() %>%
-  add_recipe(techno_acid_recipe) %>%
-  add_model(forest_model) %>%
-  fit_resamples(
-    techno_acid_cv,
-    control = control_resamples(save_pred = TRUE)
-  )
-
-techno_acid_forest %>% get_pr()
-
-workflow() %>%
-  add_recipe(techno_acid_recipe) %>%
-  add_model(forest_model) %>%
-  fit(techno_acid_features) %>%
-  pluck("fit", "fit", "fit") %>%
-  ranger::importance() %>%
-  enframe() %>%
-  mutate(name = fct_reorder(name, value)) %>%
-  ggplot(aes(name, value)) +
-  geom_col() +
-  coord_flip() +
-  theme_minimal() +
-  labs(x = NULL, y = "Importance")
-
-# ggplot
-
-techno_acid_features %>%
-  ggplot(aes(x = instrumentalness, y = danceability, colour = playlist, size = loudness)) +
-  geom_point(alpha = 0.8) +
-  scale_color_viridis_d() +
-  labs(
-    x = "Instrumentalness",
-    y = "Danceability",
-    size = "Loudness",
-    colour = "Playlist"
-  )
-
-#clustering 
-
-# early_chicago <-
-#   get_playlist_audio_features("Early Chicago", "5ZixL1Pb2mzyED9hSQ8y2G") %>%
-#   add_audio_analysis() %>%
-#   mutate(
-#     segments = map2(segments, key, compmus_c_transpose),
-#     pitches =
-#       map(segments,
-#         compmus_summarise, pitches,
-#         method = "mean", norm = "manhattan"
-#       ),
-#     timbre =
-#       map(
-#         segments,
-#         compmus_summarise, timbre,
-#         method = "mean"
-#       )
-#   ) %>%
-#   mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
-#   mutate_at(vars(pitches, timbre), map, bind_rows) %>%
-#   unnest(cols = c(pitches, timbre))
-# 
-# # pre-processing 
-# 
-# chicago_juice <-
-#   recipe(
-#     track.name ~
-#       danceability +
-#       energy +
-#       loudness +
-#       speechiness +
-#       acousticness +
-#       instrumentalness +
-#       liveness +
-#       valence +
-#       tempo +
-#       duration +
-#       C + `C#|Db` + D + `D#|Eb` +
-#       E + `F` + `F#|Gb` + G +
-#       `G#|Ab` + A + `A#|Bb` + B +
-#       c01 + c02 + c03 + c04 + c05 + c06 +
-#       c07 + c08 + c09 + c10 + c11 + c12,
-#     data = early_chicago
-#   ) %>%
-#   step_center(all_predictors()) %>%
-#   step_scale(all_predictors()) %>% 
-#   # step_range(all_predictors()) %>% 
-#   prep(early_chicago %>% mutate(track.name = str_trunc(track.name, 20))) %>%
-#   juice() %>%
-#   column_to_rownames("track.name")
-# 
-# # computing disctances 
-# 
-# acid_dist <- dist(chicago_juice, method = "euclidean")
-# 
-# # hierarchical clustering
-# 
-# chicago_dist %>% 
-#   hclust(method = "average") %>% # Try single, average, and complete.
-#   dendro_data() %>%
-#   ggdendrogram()
-```
-
-***
-
-Commentary Here
 
 ### Chart 3
 

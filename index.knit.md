@@ -38,10 +38,30 @@ If space and scope permit, I would also like to look at the comparison between e
 Visualizations {.storyboard}
 =========================================
 
+### Classification
+
+<div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
+
+
+```
+# A tibble: 3 x 3
+  class         precision recall
+  <fct>             <dbl>  <dbl>
+1 Early Berlin      0.429    0.3
+2 Early Chicago     0.636    0.7
+3 Early Detroit     0.25     0.3
+```
+
+<img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="360" data-figure-id=fig1 />
+
+***
+
+Commentary Here
+
 ### Danceability vs Energy 
 
 <div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
-<img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="360" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-3.png" width="576" data-figure-id=fig1 />
+<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="576" data-figure-id=fig3 /><img src="index_files/figure-html/unnamed-chunk-4-2.png" width="360" data-figure-id=fig3 /><img src="index_files/figure-html/unnamed-chunk-4-3.png" width="576" data-figure-id=fig3 />
 
 ***
 
@@ -50,7 +70,7 @@ Commentary Here
 ### Valence vs Loudness
 
 <div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
-<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="576" data-figure-id=fig4 /><img src="index_files/figure-html/unnamed-chunk-4-2.png" width="360" data-figure-id=fig4 /><img src="index_files/figure-html/unnamed-chunk-4-3.png" width="576" data-figure-id=fig4 />
+<img src="index_files/figure-html/unnamed-chunk-5-1.png" width="576" data-figure-id=fig6 /><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="360" data-figure-id=fig6 /><img src="index_files/figure-html/unnamed-chunk-5-3.png" width="576" data-figure-id=fig6 />
 
 ***
 
@@ -101,25 +121,6 @@ Commentary Here
 
 Commentary Here
 
-### Classification
-
-<div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
-
-
-```
-# A tibble: 3 x 3
-  class         precision recall
-  <fct>             <dbl>  <dbl>
-1 Early Berlin      0.750    0.6
-2 Early Chicago     0.5      0.5
-3 Early Detroit     0.333    0.4
-```
-
-<img src="index_files/figure-html/unnamed-chunk-10-1.png" width="576" data-figure-id=fig7 /><img src="index_files/figure-html/unnamed-chunk-10-2.png" width="360" data-figure-id=fig7 />
-
-***
-
-Commentary Here
 
 ### Chart 3
 
