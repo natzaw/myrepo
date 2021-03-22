@@ -194,12 +194,12 @@ workflow() %>%
 # ggplot
 
 techno_acid_features %>%
-  ggplot(aes(x = instrumentalness, y = danceability, colour = playlist, size = loudness)) +
+  ggplot(aes(x = tempo, y = c05, colour = playlist, size = loudness)) +
   geom_point(alpha = 0.8) +
   scale_color_viridis_d() +
   labs(
-    x = "Instrumentalness",
-    y = "Danceability",
+    x = "Tempo",
+    y = "Timbre Component 5",
     size = "Loudness",
     colour = "Playlist"
   )

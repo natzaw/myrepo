@@ -47,9 +47,9 @@ Visualizations {.storyboard}
 # A tibble: 3 x 3
   class         precision recall
   <fct>             <dbl>  <dbl>
-1 Early Berlin      0.429    0.3
-2 Early Chicago     0.636    0.7
-3 Early Detroit     0.25     0.3
+1 Early Berlin      0.643    0.9
+2 Early Chicago     0.778    0.7
+3 Early Detroit     0.571    0.4
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="360" data-figure-id=fig1 />
