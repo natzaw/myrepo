@@ -1,14 +1,32 @@
 # Origins of Techno & House 
-I will be exploring the genre of techno and house. 
-Techno emerged in the late 80's from the wide availability of synthesizers and the inspiration of early electronic music artist like Kraftwerk, Giorgio Mordor, Depech Mode, Front 242. 
-The techno seed sprouted at about the same time in America and Europe. 
-Chicago was the home of house and acid house, centering around Trax Records.
-Detriot was the home of techno with many founding fathers including Juan Atkins, Derrick May, Jeff Mills. They owned MetroPlex, Transmat Records and UR Records respectively. 
-Techno and house in Europe had its strong beginnings in Germany with hot pockets in Belguim and UK. Tresor Records in Berlin and R&S Records in Ghent egnited the techno flame. 
+Ever since moving to Amsterdam 7 years ago, I’ve been in the midst of a techno love affair. The bass enveloped me, the beat hypnotized me and the high hat had me twirling till dawn. As much as my familiarity has expanded over the years, I haven’t really delved into its origins and explored its roots. This project has provided me the opportunity to do so.  In particular, I will explore sub-genres of Techno, House and Acid; gain insights about their similarities and differences at the genre and track level.  
 
-My corpus, for now, consists of three playlists - Detriot, Chicago, Europe. I looked at the record releases from the above mentioned labels, from first releases until about 1993, and searched for available tracks on Spotify. 
+The techno seed sprouted at about the same time in America and Europe in the late 80’s thanks to the wide availability of synthesizers and drum machines. Artist took their inspirations from early electronic musicians like Kraftwerk, Giorgio Mordor, and Depeche Mode. Chicago is known as the home of house music, getting its name from “bedroom style” production and evolving from the dying disco era, with funky groove, piano riffs and catchy chorus. The industrial landscape of Detroit inspired the rougher, faster and futuristic sound of techno. Across the pond, the rave scene in Germany, Netherlands, Belgium and UK was exploding and expanding the variants of techno and acid, as well as house.  
 
-From its inception until early 1990's, there is clear geographical comparison to look at - Detriot Techno vs Berlin Techno. After 1993 or so, many Detriot founders move to Berlin... 
+To compile the project corpus, I searched for techno and house record labels that began in the late 80’s/early 90’s and searched for available tracks on Spotify. I created four playlists:  
 
+Early Europe Techno 
 
-I would also like to look at ...
+Tresor Records: Berlin, 1991 
+
+R&S Records: Ghent, 1983 
+
+Djax-Up-Beat Records: Eindhoven, 1989 
+
+Rising High Records: London, 1991 
+
+Early Detroit Techno 
+
+Underground Resistance Records: 1990 
+
+Transmat Records: 1986  
+
+Metroplex: 1985  
+
+Early Chicago House  
+
+Trax Records: 1984 
+
+Early Acid  
+
+Mix of labels above  
