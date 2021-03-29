@@ -49,10 +49,6 @@ Metroplex: 1985
 Trax Records: 1984 
 
 
-<a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly">  Chicago House </a>  
-
-Trax Records: 1984 
-
 <a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a> 
 
 
@@ -69,18 +65,6 @@ Visualizations {.storyboard}
 ### Europe Techno Vs Detriot Techno 
 
 <div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
-
-
-```
-[1] 0.532 0.415 0.651 0.282 0.854 0.817
-```
-
-
-
-```
- num [1:80] 0.532 0.415 0.651 0.282 0.854 0.817 0.426 0.221 0.386 0.161 ...
-```
-
 <img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="360" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-3.png" width="576" data-figure-id=fig1 />
 
 ***
@@ -187,9 +171,9 @@ Commentary Here
 # A tibble: 3 x 3
   class         precision recall
   <fct>             <dbl>  <dbl>
-1 Early Berlin      0.636    0.7
-2 Early Chicago     0.667    0.8
-3 Early Detroit     0.429    0.3
+1 Early Berlin      0.545    0.6
+2 Early Chicago     0.556    0.5
+3 Early Detroit     0.3      0.3
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-11-1.png" width="576" data-figure-id=fig27 /><img src="index_files/figure-html/unnamed-chunk-11-2.png" width="360" data-figure-id=fig27 />
@@ -199,7 +183,7 @@ Commentary Here
 Commentary Here
 
 
-### Chart 3
+### Transferable: Generative Art
 
 <div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
 
@@ -658,15 +642,12 @@ tibble [1 × 13] (S3: tbl_df/tbl/data.frame)
 
 ***
 
-Commentary Here
+Here I am using track audio features as input variables for generative art 
 
 
 
 
-Discussion
-=========================================
 
-Discussion Here
 
 
 

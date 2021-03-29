@@ -67,10 +67,6 @@ Metroplex: 1985
 Trax Records: 1984 
 
 
-<a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly">  Chicago House </a>  
-
-Trax Records: 1984 
-
 <a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a> 
 
 
@@ -138,8 +134,8 @@ et_int <- europeTechno$valence
 dtint <- sample(dt_int, size = 80)
 etint <- sample(et_int, size = 80)
 
-head(dtint)
-str(dtint)
+# head(dtint)
+# str(dtint)
 
 # Create data frame
 
@@ -1464,7 +1460,7 @@ techno_acid_features %>%
 Commentary Here
 
 
-### Chart 3
+### Transferable: Generative Art
 
 ```{r, echo=FALSE}
 
@@ -1514,15 +1510,12 @@ p0
 
 ***
 
-Commentary Here
+Here I am using track audio features as input variables for generative art 
 
 
 
 
-Discussion
-=========================================
 
-Discussion Here
 
 
 
