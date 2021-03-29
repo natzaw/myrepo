@@ -22,6 +22,7 @@ The techno seed sprouted at about the same time in America and Europe in the lat
 
 To compile the project corpus, I searched for techno and house record labels that began in the late 80’s/early 90’s and searched for available tracks on Spotify. I created four playlists:  
 
+
 <a href = "https://open.spotify.com/playlist/1YnOhBchUwaRFOqzWZp4CV?si=hc-Wa8lHQMGkIxTfyKyMyA"> Early Europe Techno </a> 
 
 Tresor Records: Berlin, 1991 
@@ -32,7 +33,9 @@ Djax-Up-Beat Records: Eindhoven, 1989
 
 Rising High Records: London, 1991 
 
-< a href = "https://open.spotify.com/playlist/7zJxmBOEVValZYC0zmfLrf?si=2VKWRtBwSpKEWkSSabgM9w"> Early Detroit Techno </a>
+
+
+<a href = "https://open.spotify.com/playlist/7zJxmBOEVValZYC0zmfLrf?si=2VKWRtBwSpKEWkSSabgM9w"> Early Detroit Techno </a>
 
 Underground Resistance Records: 1990 
 
@@ -40,11 +43,18 @@ Transmat Records: 1986
 
 Metroplex: 1985  
 
+
 <a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly"> Chicago House </a> 
 
 Trax Records: 1984 
 
-< a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a>  
+
+<a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly">  Chicago House </a>  
+
+Trax Records: 1984 
+
+<a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a> 
+
 
 Mix of labels above  
 
@@ -62,13 +72,13 @@ Visualizations {.storyboard}
 
 
 ```
-[1] 0.938 0.585 0.633 0.335 0.538 0.693
+[1] 0.693 0.742 0.366 0.813 0.108 0.248
 ```
 
 
 
 ```
- num [1:80] 0.938 0.585 0.633 0.335 0.538 0.693 0.18 0.554 0.271 0.161 ...
+ num [1:80] 0.693 0.742 0.366 0.813 0.108 0.248 0.412 0.198 0.228 0.79 ...
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="360" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-3.png" width="576" data-figure-id=fig1 />
@@ -116,11 +126,11 @@ Acid has a much higher average bpm, around 135, in a variety of key values howev
 
 Here I looked at three popular tracks of each genre.  
 
-The acid track has a clear C, C# and B chroma pattern which was interesting to see considering the main sound feature of acid is the oscillating synth chord that I expected would be difficult for spotify to define.  
+The <a href = "https://open.spotify.com/track/63eiF9VouGtmhiBKjm1LHU?si=8TDGwTmJTIOoMdcwVod5ZA"> acid track </a> has a clear C, C# and B chroma pattern which was interesting to see considering the main sound feature of acid is the oscillating synth chord that I expected would be difficult for spotify to define.  
 
-The house track has predominately A pitch class that I think is attributed to the bassline.  
+The <a href = "https://open.spotify.com/track/5479eh8cRkMdukYI3gtO36?si=cWIiBAPQRRev5CTGnVmsFw"> house track </a> has predominately A pitch class that I think is attributed to the bassline.  
 
-The techno track has mainly G3 pitch class most likely attributed to the bassline as well. I thought the synth cord that comes in at 0:45 sec would be identifiable but I could not place it in the chromagram.  
+The <a href = "https://open.spotify.com/track/46ddej1ibGIgs58H0wakoK?si=cXY5J-nJSZSaorZdgaL55g"> techno track </a> has mainly G3 pitch class most likely attributed to the bassline as well. I thought the synth cord that comes in at 0:45 sec would be identifiable but I could not place it in the chromagram.  
 
 ### Ceptogram + SSM: Techno vs House
 
@@ -129,7 +139,13 @@ The techno track has mainly G3 pitch class most likely attributed to the basslin
 
 ***
 
-Commentary Here
+Here I looked at a popular <a href = "https://open.spotify.com/track/1ndmrtMTVTFLRYb0RPo36k?si=O7tmelrzRHOQxLd9Djn2Xg"> techno </a> and <a href = "https://open.spotify.com/track/6AvtRMA6AzFNYZ3qEMYpch?si=oyAz8jzBRT6dzicmMBIrvA"> house track </a> to compare timbre features.  
+
+The most prominent feature of the techno track is the loud Brazilian batucada percussion that drop in two sections which shows up as strong c02 vibrance. Between these sections is a panning synth that seems to shows up in c05 and /or c09.  
+
+The house track has less concentrated timbre features with a few highlights at around 250 and 300 seconds.   
+
+The self-similarity matrices show that the techno has slightly less repetition than the house track which makes sense in that the techno track has several distinguishing segments while the house tracks is rather repetitive. The two bright seem to corresponds with a clear break in the tracks where the piano chords go a little whack.  
 
 ### Chordogram
 
@@ -167,9 +183,9 @@ Commentary Here
 # A tibble: 3 x 3
   class         precision recall
   <fct>             <dbl>  <dbl>
-1 Early Berlin      0.636    0.7
-2 Early Chicago     0.778    0.7
-3 Early Detroit     0.5      0.5
+1 Early Berlin      0.7      0.7
+2 Early Chicago     0.727    0.8
+3 Early Detroit     0.556    0.5
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-11-1.png" width="576" data-figure-id=fig27 /><img src="index_files/figure-html/unnamed-chunk-11-2.png" width="360" data-figure-id=fig27 />
