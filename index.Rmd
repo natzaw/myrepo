@@ -791,7 +791,7 @@ The house track has less concentrated timbre features with a few highlights at a
 
 The self-similarity matrices show that the techno has slightly less repetition than the house track which makes sense in that the techno track has several distinguishing segments while the house tracks is rather repetitive. The two bright seem to corresponds with a clear break in the tracks where the piano chords go a little whack.  
 
-### Chordogram
+### Keygram Tonal Analysis
 
 ```{r, echo=FALSE}
 
@@ -1081,7 +1081,11 @@ mysteryLove %>%
 
 ***
 
-Commentary Here
+<a href = "https://open.spotify.com/track/6bzV0xGO4dROmmL9GmVkjM?si=8IuWBrXoRSCtm974r7pI9g"> “Go” by Moby </a> is popular techno track released in 1992. When I first heard the track, I recognized the beginning chords from the song <a href = "https://open.spotify.com/track/7Bk3p8UqcP4sItaWNWbvXL?si=5VLCKWIATH2Qfudt5yEV0A"> “Laura’s Theme” </a> from the series Twin Peaks. I was curious to see if the keygram will pick up the similarities. “Go” does register the chords, D flat major, F sharp minor and D# minor, at the beginning and middle of the track when they are they are the only sounds playing. When comparing to “Laura’s theme” however, the chords don’t seem to align quite right, except at the last section of the song.  
+
+I was surprised to see that the acid track <a href = "https://open.spotify.com/track/63eiF9VouGtmhiBKjm1LHU?si=NtjICCWcQ021mZ3zxJqPLw"> “Acid Tracks” </a> registered clearer tones than house track <a href = "https://open.spotify.com/track/6AvtRMA6AzFNYZ3qEMYpch?si=nQN0ewjOQOmTdBqD2vhGKA"> “Mystery of Love” </a> considering the wide oscillation of the acid synth compared to the rather structured composition of the house tracks.  
+
+I was interested to see what the keygram would pick up from the segmented house/acid track <a href = "https://open.spotify.com/track/4kbzPGFkJPzCWrNOJXKVi0?si=SrrdkiJKTDi4xPts3Ekmqw"> “House is Mine” </a>. I did not expect that the middle acid section would be have higher tonal energy than the beginning and end house section. But this result would align with the observation above.  
 
 ### Novelty Function & Ceptogram: House is Mine 
 

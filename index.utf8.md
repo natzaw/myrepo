@@ -72,13 +72,13 @@ Visualizations {.storyboard}
 
 
 ```
-[1] 0.693 0.742 0.366 0.813 0.108 0.248
+[1] 0.532 0.415 0.651 0.282 0.854 0.817
 ```
 
 
 
 ```
- num [1:80] 0.693 0.742 0.366 0.813 0.108 0.248 0.412 0.198 0.228 0.79 ...
+ num [1:80] 0.532 0.415 0.651 0.282 0.854 0.817 0.426 0.221 0.386 0.161 ...
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="360" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-3.png" width="576" data-figure-id=fig1 />
@@ -147,14 +147,18 @@ The house track has less concentrated timbre features with a few highlights at a
 
 The self-similarity matrices show that the techno has slightly less repetition than the house track which makes sense in that the techno track has several distinguishing segments while the house tracks is rather repetitive. The two bright seem to corresponds with a clear break in the tracks where the piano chords go a little whack.  
 
-### Chordogram
+### Keygram Tonal Analysis
 
 <div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
 <img src="index_files/figure-html/unnamed-chunk-8-1.png" width="576" data-figure-id=fig17 /><img src="index_files/figure-html/unnamed-chunk-8-2.png" width="360" data-figure-id=fig17 /><img src="index_files/figure-html/unnamed-chunk-8-3.png" width="576" data-figure-id=fig17 /><img src="index_files/figure-html/unnamed-chunk-8-4.png" width="360" data-figure-id=fig17 /><img src="index_files/figure-html/unnamed-chunk-8-5.png" width="576" data-figure-id=fig17 /><img src="index_files/figure-html/unnamed-chunk-8-6.png" width="360" data-figure-id=fig17 />
 
 ***
 
-Commentary Here
+<a href = "https://open.spotify.com/track/6bzV0xGO4dROmmL9GmVkjM?si=8IuWBrXoRSCtm974r7pI9g"> “Go” by Moby </a> is popular techno track released in 1992. When I first heard the track, I recognized the beginning chords from the song <a href = "https://open.spotify.com/track/7Bk3p8UqcP4sItaWNWbvXL?si=5VLCKWIATH2Qfudt5yEV0A"> “Laura’s Theme” </a> from the series Twin Peaks. I was curious to see if the keygram will pick up the similarities. “Go” does register the chords, D flat major, F sharp minor and D# minor, at the beginning and middle of the track when they are they are the only sounds playing. When comparing to “Laura’s theme” however, the chords don’t seem to align quite right, except at the last section of the song.  
+
+I was surprised to see that the acid track <a href = "https://open.spotify.com/track/63eiF9VouGtmhiBKjm1LHU?si=NtjICCWcQ021mZ3zxJqPLw"> “Acid Tracks” </a> registered clearer tones than house track <a href = "https://open.spotify.com/track/6AvtRMA6AzFNYZ3qEMYpch?si=nQN0ewjOQOmTdBqD2vhGKA"> “Mystery of Love” </a> considering the wide oscillation of the acid synth compared to the rather structured composition of the house tracks.  
+
+I was interested to see what the keygram would pick up from the segmented house/acid track <a href = "https://open.spotify.com/track/4kbzPGFkJPzCWrNOJXKVi0?si=SrrdkiJKTDi4xPts3Ekmqw"> “House is Mine” </a>. I did not expect that the middle acid section would be have higher tonal energy than the beginning and end house section. But this result would align with the observation above.  
 
 ### Novelty Function & Ceptogram: House is Mine 
 
@@ -183,9 +187,9 @@ Commentary Here
 # A tibble: 3 x 3
   class         precision recall
   <fct>             <dbl>  <dbl>
-1 Early Berlin      0.7      0.7
-2 Early Chicago     0.727    0.8
-3 Early Detroit     0.556    0.5
+1 Early Berlin      0.636    0.7
+2 Early Chicago     0.667    0.8
+3 Early Detroit     0.429    0.3
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-11-1.png" width="576" data-figure-id=fig27 /><img src="index_files/figure-html/unnamed-chunk-11-2.png" width="360" data-figure-id=fig27 />
