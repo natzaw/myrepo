@@ -33,14 +33,18 @@ library(compmus)
 
 Introduction
 =========================================
-
+{=html}
 Ever since moving to Amsterdam 7 years ago, I’ve been in the midst of a techno love affair. The bass enveloped me, the beat hypnotized me and the high hat had me twirling till dawn. As much as my familiarity has expanded over the years, I haven’t really delved into its origins and explored its roots. This project has provided me the opportunity to do so.  In particular, I will explore sub-genres of Techno, House and Acid; gain insights about their similarities and differences at the genre and track level.  
 
 The techno seed sprouted at about the same time in America and Europe in the late 80’s thanks to the wide availability of synthesizers and drum machines. Artist took their inspirations from early electronic musicians like Kraftwerk, Giorgio Mordor, and Depeche Mode. Chicago is known as the home of house music, getting its name from “bedroom style” production and evolving from the dying disco era, with funky groove, piano riffs and catchy chorus. The industrial landscape of Detroit inspired the rougher, faster and futuristic sound of techno. Across the pond, the rave scene in Germany, Netherlands, Belgium and UK was exploding and expanding the variants of techno and acid, as well as house.  
 
 To compile the project corpus, I searched for techno and house record labels that began in the late 80’s/early 90’s and searched for available tracks on Spotify. I created four playlists:  
 
+<<<<<<< HEAD
 <a href = "https://open.spotify.com/playlist/1YnOhBchUwaRFOqzWZp4CV?si=hc-Wa8lHQMGkIxTfyKyMyA"> Early Europe Techno </a> 
+=======
+<a href = "https://open.spotify.com/playlist/1YnOhBchUwaRFOqzWZp4CV?si=hc-Wa8lHQMGkIxTfyKyMyA"> Early Europe Techno </a>
+>>>>>>> ff03dc142cadf257ae3cd21e79223362f74a9377
 
 Tresor Records: Berlin, 1991 
 
@@ -58,11 +62,19 @@ Transmat Records: 1986
 
 Metroplex: 1985  
 
+<<<<<<< HEAD
 <a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly"> Chicago House </a> 
 
 Trax Records: 1984 
 
 < a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a>  
+=======
+<a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly"> Chicago House </a>  
+
+Trax Records: 1984 
+
+< a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a> 
+>>>>>>> ff03dc142cadf257ae3cd21e79223362f74a9377
 
 Mix of labels above  
 
@@ -773,7 +785,13 @@ mysteryLove %>%
 
 ***
 
-Commentary Here
+Here I looked at a popular techno and house track to compare timbre features.  
+
+The most prominent feature of the techno track is the loud Brazilian batucada percussion that drop in two sections which shows up as strong c02 vibrance. Between these sections is a panning synth that seems to shows up in c05 and /or c09.  
+
+The house track has less concentrated timbre features with a few highlights at around 250 and 300 seconds.   
+
+The self-similarity matrices show that the techno has slightly less repetition than the house track which makes sense in that the techno track has several distinguishing segments while the house tracks is rather repetitive. The two bright seem to corresponds with a clear break in the tracks where the piano chords go a little whack.  
 
 ### Chordogram
 
