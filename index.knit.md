@@ -22,7 +22,7 @@ The techno seed sprouted at about the same time in America and Europe in the lat
 
 To compile the project corpus, I searched for techno and house record labels that began in the late 80’s/early 90’s and searched for available tracks on Spotify. I created four playlists:  
 
-Early Europe Techno 
+<a href = "https://open.spotify.com/playlist/1YnOhBchUwaRFOqzWZp4CV?si=hc-Wa8lHQMGkIxTfyKyMyA"> Early Europe Techno </a> 
 
 Tresor Records: Berlin, 1991 
 
@@ -32,7 +32,7 @@ Djax-Up-Beat Records: Eindhoven, 1989
 
 Rising High Records: London, 1991 
 
-Early Detroit Techno 
+< a href = "https://open.spotify.com/playlist/7zJxmBOEVValZYC0zmfLrf?si=2VKWRtBwSpKEWkSSabgM9w"> Early Detroit Techno </a>
 
 Underground Resistance Records: 1990 
 
@@ -40,13 +40,16 @@ Transmat Records: 1986
 
 Metroplex: 1985  
 
-Early Chicago House  
+<a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly"> Chicago House </a> 
 
 Trax Records: 1984 
 
-Early Acid  
+< a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a>  
 
 Mix of labels above  
+
+
+Spotify user : natzaw
 
 <div class="knitr-options" data-fig-width="576" data-fig-height="460"></div>
 
@@ -59,13 +62,13 @@ Visualizations {.storyboard}
 
 
 ```
-[1] 0.426 0.790 0.931 0.221 0.833 0.817
+[1] 0.938 0.585 0.633 0.335 0.538 0.693
 ```
 
 
 
 ```
- num [1:80] 0.426 0.79 0.931 0.221 0.833 0.817 0.797 0.638 0.854 0.0389 ...
+ num [1:80] 0.938 0.585 0.633 0.335 0.538 0.693 0.18 0.554 0.271 0.161 ...
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="360" data-figure-id=fig1 /><img src="index_files/figure-html/unnamed-chunk-3-3.png" width="576" data-figure-id=fig1 />
@@ -164,9 +167,9 @@ Commentary Here
 # A tibble: 3 x 3
   class         precision recall
   <fct>             <dbl>  <dbl>
-1 Early Berlin      0.727    0.8
-2 Early Chicago     0.6      0.6
-3 Early Detroit     0.556    0.5
+1 Early Berlin      0.636    0.7
+2 Early Chicago     0.778    0.7
+3 Early Detroit     0.5      0.5
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-11-1.png" width="576" data-figure-id=fig27 /><img src="index_files/figure-html/unnamed-chunk-11-2.png" width="360" data-figure-id=fig27 />
