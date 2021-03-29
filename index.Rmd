@@ -165,7 +165,11 @@ ggplot(chicagoHouse, (aes(tempo, loudness, color = key, size = energy ))) +
 
 ***
 
-Commentary Here
+As expected, techno in Detroit and Europe are quite similar. Danceability are valence factors are roughly the same, giving the rave parties similar vibes in both regions. Detroit has slightly more median energy but lower instrumentalness.  
+
+European techno has more consistent tempo between 120 –125 bpm and more consistent loudness centering around –10 db. It also interesting to see here that the outliers have higher key values of above 8 and generally lower energy values.  
+
+Detroit techno has greater bpm spread with several tracks going above 130 bmp and a few hovering around 110. Loudness also has slighter greater spread and more tracks passing the –15 db threshold. In contrast to European techno, the outliers tend to have lower key values and higher key values.
 
 
 ### Detroit Techno Vs Chicago House 
@@ -243,7 +247,10 @@ ggplot(chicagoHouse, (aes(tempo, loudness, color = key, size = energy ))) +
 
 ***
 
-Commentary Here
+Chicago house is slightly greater danceability factor and greater positive emotional valence reflecting its disco and funk roots. Detroit techno has more energy and on average, less vocals, however it’s interesting to see that Chicago has more instrumental outliers on the lower spectrum considering that usually house has more vocals  
+
+Chicago house has more consistent tempo between 120 –125 bpm and a few outliers that are mostly all in higher keys compared to Detroit techno. It has a slightly wider spread of bpm with many tracks over 130 bpm and a range of key values in outlier positions.  
+
 
 ### Chicago House Vs Early Acid  
 
@@ -274,14 +281,14 @@ chenergy <- sample(ch_energy, size = 57)
 ca_val <- earlyAcid$valence
 ch_val <- chicagoHouse$valence
 
-caval <- sample(dt_val, size = 57)
+caval <- sample(ca_val, size = 57)
 chval <- sample(ch_val, size = 57)
 
 #instrumentalness
 ca_int <- earlyAcid$valence
 ch_int <- chicagoHouse$valence
 
-caint <- sample(dt_int, size = 57)
+caint <- sample(ca_int, size = 57)
 chint <- sample(ch_int, size = 57)
 
 
@@ -301,14 +308,14 @@ ggplot(energy3, aes(y, x, fill= factor(z))) +
   geom_boxplot() + 
   theme(axis.title = element_blank()) + 
   labs(
-    title="Chicago House vs Early", 
+    title="Chicago House vs Early Acid", 
     fill = "Features", 
-    x = "Chicago House vs Early")
+    x = "Chicago House vs Early Acid")
 
 #point plot 
-ggplot(detroitTechno, (aes(tempo, loudness, color = key, size = energy))) +
+ggplot(earlyAcid, (aes(tempo, loudness, color = key, size = energy))) +
   geom_point() +
-  ggtitle("Detriot Techno")
+  ggtitle("Early Acid")
 
 ggplot(chicagoHouse, (aes(tempo, loudness, color = key, size = energy ))) +
   geom_point() +
@@ -319,11 +326,13 @@ ggplot(chicagoHouse, (aes(tempo, loudness, color = key, size = energy ))) +
 
 ***
 
-Commentary Here
+This boxplot surprised me a bit. The features are more similar than I expected. Because of its harsher sound, acid valence and instrumentalness is higher than I thought and would not expect it to surpass house, although it does have more outliers on the low spectrum. Acid danceability is lower than house which make sense due to house’s funk and disco roots. 
+
+Acid has a much higher average bpm, around 135, in a variety of key values however there is a clear pattern where higher energy indicated higher loudness and lower key on average.   
 
 
 
-### Chrome Features Chromagram + DTW
+### Chroma Features: Techno vs House vs Acid 
 
 ```{r, echo=FALSE}
 
@@ -376,7 +385,7 @@ acidTrack %>%
     )
   ) +
   geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = "Acid: Acid Tracks - Phuture") +
   theme_minimal() +
   scale_fill_viridis_c()
 
@@ -412,7 +421,7 @@ houseTrack2 %>%
     )
   ) +
   geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = "House: Can you feel it - Mr.fingers") +
   theme_minimal() +
   scale_fill_viridis_c()
 
@@ -429,7 +438,7 @@ technoTrack %>%
     )
   ) +
   geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = " Techno: Energy Flash - Joey Beltram") +
   theme_minimal() +
   scale_fill_viridis_c()
 
@@ -456,9 +465,15 @@ technoTrack %>%
 
 ***
 
-Commentary Here
+Here I looked at three popular tracks of each genre.  
 
-### Ceptogram + SSM
+The acid track has a clear C, C# and B chroma pattern which was interesting to see considering the main sound feature of acid is the oscillating synth chord that I expected would be difficult for spotify to define.  
+
+The house track has predominately A pitch class that I think is attributed to the bassline.  
+
+The techno track has mainly G3 pitch class most likely attributed to the bassline as well. I thought the synth cord that comes in at 0:45 sec would be identifiable but I could not place it in the chromagram.  
+
+### Ceptogram + SSM: Techno vs House
 
 ```{r, echo=FALSE}
 
@@ -557,7 +572,7 @@ capricorn20hz %>%                                                 # change track
     )
   ) +
   geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = "Techno: 20hz - Capricorn") +
   scale_fill_viridis_c() +
   theme_classic()
 
@@ -577,7 +592,7 @@ capricorn20hz %>%
   coord_fixed() +
   scale_fill_viridis_c(guide = "none") +
   theme_classic() +
-  labs(x = "", y = "")
+  labs(x = "", y = "", title = "Techno: 20hz - Capricorn")
 
 # ### House is Mine  
 # # load track features
@@ -671,7 +686,7 @@ mysteryLove %>%                                                 # change trackNa
     )
   ) +
   geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = " House: Mystery of Love - Mr.Fingers") +
   scale_fill_viridis_c() +
   theme_classic()
 
@@ -691,7 +706,7 @@ mysteryLove %>%
   coord_fixed() +
   scale_fill_viridis_c(guide = "none") +
   theme_classic() +
-  labs(x = "", y = "")
+  labs(x = "", y = "", title = "House: Mystery of Love - Mr.Fingers")
 
 # ### RIDE THE RHYTHM   
 # # load track features
@@ -755,7 +770,7 @@ mysteryLove %>%
 
 ***
 
-In this section, I will compare four tracks: Acid House vs. Chicag House and Berlin Techni vs Detroit Techno 
+Commentary Here
 
 ### Chordogram
 
@@ -1047,9 +1062,9 @@ mysteryLove %>%
 
 ***
 
-Here, I will look at...
+Commentary Here
 
-### Novelty Function:Loudness & Tempogram 
+### Novelty Function & Ceptogram: House is Mine 
 
 ```{r, echo=FALSE}
 
@@ -1073,7 +1088,7 @@ houseMine %>%
   geom_line() +
   xlim(0, 30) +
   theme_minimal() +
-  labs(x = "Time (s)", y = "Novelty")
+  labs(x = "Time (s)", y = "Novelty", title = "House is Mine - Hypnotist")
 
 # can use similar approaches for chromagrams and cepstrograms
 
@@ -1096,7 +1111,7 @@ houseMine %>%
   geom_tile() +
   scale_fill_viridis_c(guide = "none") +
   xlim(0, 30) +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = "House is Mine - Hypnotist") +
   theme_classic()
 
 # compmus_gather_timbre
@@ -1117,7 +1132,7 @@ houseMine %>%
   geom_tile() +
   scale_fill_viridis_c(guide = "none") +
   xlim(0, 30) +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = "House is Mine - Hypnotist") +
   theme_classic()
 
 # # temporgrams
@@ -1478,25 +1493,7 @@ p0
 
 Commentary Here
 
-### Chart 3
 
-```{r, echo=FALSE}
-
-```
-
-***
-
-Commentary Here
-
-### Chart 3
-
-```{r, echo=FALSE}
-
-```
-
-***
-
-Commentary Here
 
 
 Discussion
