@@ -40,7 +40,7 @@ The techno seed sprouted at about the same time in America and Europe in the lat
 
 To compile the project corpus, I searched for techno and house record labels that began in the late 80’s/early 90’s and searched for available tracks on Spotify. I created four playlists:  
 
-Early Europe Techno 
+<a href = " https://open.spotify.com/playlist/1YnOhBchUwaRFOqzWZp4CV?si=hc-Wa8lHQMGkIxTfyKyMyA> Early Europe Techno </a>
 
 Tresor Records: Berlin, 1991 
 
@@ -50,7 +50,7 @@ Djax-Up-Beat Records: Eindhoven, 1989
 
 Rising High Records: London, 1991 
 
-Early Detroit Techno 
+< href = "https://open.spotify.com/playlist/7zJxmBOEVValZYC0zmfLrf?si=2VKWRtBwSpKEWkSSabgM9w"> Early Detroit Techno </a>
 
 Underground Resistance Records: 1990 
 
@@ -58,11 +58,11 @@ Transmat Records: 1986
 
 Metroplex: 1985  
 
-Early Chicago House  
+<a href = "https://open.spotify.com/playlist/3CnYQrWpRhyWqYmoUyQdtY?si=VoWP3226Svehn5Tlai4zWQEarly"> Chicago House </a>  
 
 Trax Records: 1984 
 
-Early Acid  
+< a href = "https://open.spotify.com/playlist/1Ybjwa5pLtVCqlXrIrOOiF?si=eMeDPBgtQ_a_2sVrqi4LRw"> Early Acid </a> 
 
 Mix of labels above  
 
@@ -770,7 +770,13 @@ mysteryLove %>%
 
 ***
 
-Commentary Here
+Here I looked at a popular techno and house track to compare timbre features.  
+
+The most prominent feature of the techno track is the loud Brazilian batucada percussion that drop in two sections which shows up as strong c02 vibrance. Between these sections is a panning synth that seems to shows up in c05 and /or c09.  
+
+The house track has less concentrated timbre features with a few highlights at around 250 and 300 seconds.   
+
+The self-similarity matrices show that the techno has slightly less repetition than the house track which makes sense in that the techno track has several distinguishing segments while the house tracks is rather repetitive. The two bright seem to corresponds with a clear break in the tracks where the piano chords go a little whack.  
 
 ### Chordogram
 
